@@ -11,7 +11,7 @@ export default function HeroSection() {
           </p>
         </div>
         
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <div className="grid grid-cols-1  gap-6">
           <div className="bg-white/10 backdrop-blur-sm rounded-lg p-6 text-center">
             <div className="inline-flex items-center justify-center w-12 h-12 bg-white/20 rounded-full mb-4">
               <Target className="w-6 h-6" />
