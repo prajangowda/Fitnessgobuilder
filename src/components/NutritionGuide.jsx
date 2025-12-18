@@ -80,7 +80,7 @@ export default function NutritionGuide() {
   );
 
   return (
-    <div>
+    <div className='max-w-5xl mx-auto'>
       <div className="mb-8">
         <h2 className="text-gray-900 mb-2">Nutrition Guide</h2>
         <p className="text-gray-600">
@@ -89,8 +89,8 @@ export default function NutritionGuide() {
       </div>
 
       {/* Daily Summary */}
-      <div className="bg-linear-to-r from-green-500 to-green-600 rounded-lg shadow-md p-6 mb-8 text-white">
-        <h3 className="text-white mb-4">Daily Nutrition Summary</h3>
+      <div className="bg-linear-to-r from-green-500 to-green-600 rounded-lg shadow-md p-6 mb-8  text-white">
+        <h3 className="text-white mb-4 ">Daily Nutrition Summary</h3>
         <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
           <div>
             <div className="text-green-100">Total Calories</div>
@@ -112,7 +112,7 @@ export default function NutritionGuide() {
       </div>
 
       {/* Meal Plan */}
-      <div className="mb-8">
+      <div className="mb-8 mx-14">
         <h3 className="text-gray-900 mb-4">Today{"'"}s Meal Plan</h3>
         <div className="space-y-6">
           {mealPlan.map((meal, index) => {

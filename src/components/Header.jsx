@@ -1,5 +1,6 @@
 // src/components/Header.jsx
 import { Dumbbell, User } from 'lucide-react';
+import HeroSection from './HeroSection';
 
 export default function Header(){
   return (
@@ -12,13 +13,13 @@ export default function Header(){
           </div>
 
           <nav className="hidden md:flex items-center gap-6">
-            <a href="#" className="text-gray-600 hover:text-gray-900 transition-colors">
+            <a href="/" className="text-gray-600 hover:text-gray-900 transition-colors">
               Home
             </a>
-            <a href="#" className="text-gray-600 hover:text-gray-900 transition-colors">
+            <a href="/about" className="text-gray-600 hover:text-gray-900 transition-colors">
               About
             </a>
-            <a href="#" className="text-gray-600 hover:text-gray-900 transition-colors">
+            <a href="/contact" className="text-gray-600 hover:text-gray-900 transition-colors">
               Contact
             </a>
           </nav>
@@ -29,6 +30,7 @@ export default function Header(){
           </button>
         </div>
       </div>
+      
     </header>
   );
 }

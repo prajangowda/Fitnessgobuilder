@@ -1,7 +1,9 @@
 import { Trophy, Target, Zap } from 'lucide-react';
+import { WorkoutPrograms } from './WorkoutPrograms';
 
 export default function HeroSection() {
   return (
+    <>
     <div className="bg-linear-to-r from-blue-600 to-blue-800 text-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
         <div className="text-center mb-8">
@@ -11,7 +13,7 @@ export default function HeroSection() {
           </p>
         </div>
         
-        <div className="grid grid-cols-1  gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
           <div className="bg-white/10 backdrop-blur-sm rounded-lg p-6 text-center">
             <div className="inline-flex items-center justify-center w-12 h-12 bg-white/20 rounded-full mb-4">
               <Target className="w-6 h-6" />
@@ -44,5 +46,7 @@ export default function HeroSection() {
         </div>
       </div>
     </div>
+    <WorkoutPrograms/>
+    </>
   );
 }
