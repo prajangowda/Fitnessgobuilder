@@ -42,24 +42,7 @@ const mealPlan = [
   },
 ];
 
-const nutritionTips = [
-  {
-    title: 'Stay Hydrated',
-    description: 'Drink at least 8 glasses of water daily to support your metabolism and workout performance.',
-  },
-  {
-    title: 'Protein Timing',
-    description: 'Consume protein within 30 minutes after your workout to maximize muscle recovery.',
-  },
-  {
-    title: 'Balanced Macros',
-    description: 'Aim for a balanced intake of proteins, carbohydrates, and healthy fats.',
-  },
-  {
-    title: 'Meal Prep',
-    description: 'Prepare meals in advance to stay on track with your nutrition goals.',
-  },
-];
+
 
 export default function NutritionGuide() {
   const totalCalories = mealPlan.reduce(
@@ -153,18 +136,6 @@ export default function NutritionGuide() {
         </div>
       </div>
 
-      {/* Nutrition Tips */}
-      <div>
-        <h3 className="text-gray-900 mb-4">Nutrition Tips</h3>
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-          {nutritionTips.map((tip, index) => (
-            <div key={index} className="bg-white rounded-lg shadow-md p-6">
-              <h4 className="text-gray-900 mb-2">{tip.title}</h4>
-              <p className="text-gray-600">{tip.description}</p>
-            </div>
-          ))}
-        </div>
       </div>
-    </div>
   );
 }

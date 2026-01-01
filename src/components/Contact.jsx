@@ -1,61 +1,125 @@
-import { Mail, Dumbbell, User, ClipboardList } from "lucide-react";
+import { Mail } from "lucide-react";
+import { useState } from "react";
 
 export default function Contact() {
-    return (
-        <div className="min-h-screen-[90vh] mt-10 bg-gray-50 flex items-center justify-center px-4">
-            <div className="max-w-xl w-full bg-white rounded-2xl shadow-lg p-8">
+  const [formData, setFormData] = useState({
+    name: "",
+    phone: "",
+    email: "",
+    gender: "",
+    note: "",
+  });
 
-                {/* Header */}
-                <div className="text-center mb-6">
-                    <Mail className="w-12 h-12 text-indigo-600 mx-auto mb-3" />
-                    <h1 className="text-2xl font-bold text-gray-900">
-                        Contact Me
-                    </h1>
-                    <p className="text-gray-600 mt-2">
-                        Reach out for personal training, custom plans, or gym membership
-                    </p>
-                </div>
+  const handleChange = (e) => {
+    setFormData({ ...formData, [e.target.name]: e.target.value });
+  };
 
-                {/* Services */}
-                <div className="space-y-4 mb-6">
-                    <div className="flex items-center gap-3 text-gray-700">
-                        <User className="text-indigo-600" />
-                        <span>One-on-One Personal Training</span>
-                    </div>
-                    <div className="flex items-center gap-3 text-gray-700">
-                        <ClipboardList className="text-indigo-600" />
-                        <span>Customized Workout & Diet Plans</span>
-                    </div>
-                    <div className="flex items-center gap-3 text-gray-700">
-                        <Dumbbell className="text-indigo-600" />
-                        <span>Gym Membership & Coaching</span>
-                    </div>
-                </div>
+  const handleSubmit = async (e) => {
+    e.preventDefault();
 
-                {/* Email */}
-                <div className="bg-gray-100 rounded-xl p-4 text-center mb-6">
-                    <p className="text-gray-700 mb-1">Email me directly at</p>
-                    <p className="text-lg font-semibold text-indigo-600">
-                        prajangowdap@gmail.com
-                    </p>
-                </div>
+    await fetch("http://localhost:8080/contact", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(formData),
+    });
 
-                {/* Mail Button */}
-                <a
-                    href="https://mail.google.com/mail/?view=cm&fs=1&to=prajangowdap@gmail.com&su=Fitness%20Training%20Enquiry"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="block w-full text-center px-4 py-3 bg-indigo-600 text-white rounded-xl font-semibold hover:bg-indigo-700 transition-colors"
-                >
-                    Send Email
-                </a>
+    alert("Thank you! I’ll contact you soon.");
+    setFormData({ name: "", phone: "", email: "", gender: "", note: "" });
+  };
 
-                {/* Footer Note */}
-                <p className="text-xs text-gray-500 text-center mt-4">
-                    Please mention your fitness goal, age, and training preference
-                    (online/offline).
-                </p>
-            </div>
+  return (
+    <div className="w-full overflow-hidden">
+      <section className="relative w-full h-[89.7vh]">
+
+        {/* Background Image */}
+        <img
+          src="/images/contact.png" // replace if needed
+          alt="Gym contact"
+          className="absolute inset-0 w-full h-full object-cover"
+        />
+
+        {/* Overlay */}
+        {/* <div className="absolute inset-0 bg-black/45"></div> */}
+
+        {/* Contact Card */}
+        <div className="relative z-10 flex items-center justify-center h-full px-4">
+          <div className="w-full max-w-sm bg-white/90 backdrop-blur-md rounded-xl shadow-xl p-5">
+
+            <h2 className="text-xl font-bold text-slate-800 mb-4 text-center">
+              Contact Me
+            </h2>
+
+            <form onSubmit={handleSubmit} className="space-y-3">
+
+              <input
+                type="text"
+                name="name"
+                placeholder="Your Name"
+                value={formData.name}
+                onChange={handleChange}
+                required
+                className="w-full border border-slate-300 px-3 py-2 rounded-md 
+                           focus:ring-2 focus:ring-indigo-500 outline-none text-sm"
+              />
+
+              <input
+                type="tel"
+                name="phone"
+                placeholder="Phone Number"
+                value={formData.phone}
+                onChange={handleChange}
+                required
+                className="w-full border border-slate-300 px-3 py-2 rounded-md 
+                           focus:ring-2 focus:ring-indigo-500 outline-none text-sm"
+              />
+
+              <input
+                type="email"
+                name="email"
+                placeholder="Email Address"
+                value={formData.email}
+                onChange={handleChange}
+                required
+                className="w-full border border-slate-300 px-3 py-2 rounded-md 
+                           focus:ring-2 focus:ring-indigo-500 outline-none text-sm"
+              />
+
+              <select
+                name="gender"
+                value={formData.gender}
+                onChange={handleChange}
+                required
+                className="w-full border border-slate-300 px-3 py-2 rounded-md 
+                           focus:ring-2 focus:ring-indigo-500 outline-none text-sm"
+              >
+                <option value="">Select Gender</option>
+                <option value="Male">Male</option>
+                <option value="Female">Female</option>
+                <option value="Other">Other</option>
+              </select>
+
+              <textarea
+                name="note"
+                placeholder="Your fitness goal / message"
+                value={formData.note}
+                onChange={handleChange}
+                rows="3"
+                className="w-full border border-slate-300 px-3 py-2 rounded-md 
+                           focus:ring-2 focus:ring-indigo-500 outline-none text-sm"
+              />
+
+              <button
+                type="submit"
+                className="w-full py-2.5 rounded-lg font-semibold text-white text-sm
+                           bg-linear-to-r from-indigo-700 to-slate-700 hover:opacity-90"
+              >
+                Submit
+              </button>
+            </form>
+
+          </div>
         </div>
-    );
+      </section>
+    </div>
+  );
 }

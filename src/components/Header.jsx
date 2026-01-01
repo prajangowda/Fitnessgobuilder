@@ -1,6 +1,6 @@
-// src/components/Header.jsx
+
 import { Dumbbell, User } from 'lucide-react';
-import HeroSection from './HeroSection';
+
 
 export default function Header(){
   return (
@@ -12,7 +12,7 @@ export default function Header(){
             <span className="text-gray-900 font-semibold text-lg">FitCoach Pro</span>
           </div>
 
-          <nav className="hidden md:flex items-center gap-6">
+        <nav className="flex flex-col md:flex-row items-center gap-6">
             <a href="/" className="text-gray-600 hover:text-gray-900 transition-colors">
               Home
             </a>
