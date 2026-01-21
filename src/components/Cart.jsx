@@ -14,11 +14,12 @@ const Cart = ({ cart = [], setCart }) => {
     return Number(cost.replace("₹", ""));
   };
 
+  const GST_PERCENT = 0;
   // 🔹 Total cost
   const totalCost = cart.reduce(
     (sum, item) => sum + getCostValue(item.cost),
     0
-  );
+  )* (1 - GST_PERCENT / 100);;
 
   // 🔹 Buy handler (POST request)
   const handleBuy = async () => {
